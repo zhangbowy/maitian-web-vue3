@@ -14,7 +14,7 @@ import { setupStore } from '/@/store';
 import { setupGlobDirectives } from '/@/directives';
 import { setupI18n } from '/@/locales/setupI18n';
 import { registerGlobComp } from '/@/components/registerGlobComp';
-
+import pkg from '/@/../package.json';
 // Importing on demand in local development will increase the number of browser requests by around 20%.
 // This may slow down the browser refresh speed.
 // Therefore, only enable on-demand importing in production environments .
@@ -54,6 +54,19 @@ async function bootstrap() {
   // await router.isReady();
 
   app.mount('#app');
+
+  // 1. 将css样式内容放入数
+  const styles = [
+    'color: white',
+    'background: green',
+    'font-size: 24px',
+    'border: 1px solid #fff',
+    'text-shadow: 2px 2px black',
+    'padding: 10px',
+  ].join(';');
+  // 2. 利用join方法讲各项以分号连接成一串字符串
+  // 3. 传入styles变量
+  console.log(`%cDCPOOL数据平台,当前版本号 V${pkg.version}.`, styles);
 }
 
 bootstrap();
